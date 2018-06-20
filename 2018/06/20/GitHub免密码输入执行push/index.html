@@ -10,7 +10,7 @@
   
   <title>
     
-      JerrySir&#39;s blog
+      GitHub免密码输入执行push | JerrySir&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,52 +138,189 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>GitHub免密码输入执行push</h2>
+  <p class="post-date">2018-06-20</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>执行git clone 或 git init后，文件夹内产生.git隐藏文件夹，打开找到 config 文件编辑，找到url项：</p>
+<blockquote>
+<p>url = <a href="https://github.com/xxxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxxx/xxx.git</a></p>
+</blockquote>
+<p>修改为:</p>
+<blockquote>
+<p>url = https://[username]:[password]@github.com/xxxx/xxx.git</p>
+</blockquote>
+<p>例如:</p>
+<blockquote>
+<p>url = <a href="https://zhangsan:123456@github.com/xxxx/xxx.git" target="_blank" rel="noopener">https://zhangsan:123456@github.com/xxxx/xxx.git</a></p>
+</blockquote>
+<p>保存后再执行push操作，将省去了输入密码的过程。</p>
+</section>
+    <!-- Tags START -->
     
-    
-      <div class="section-list-item">
-        <a href="/2018/06/20/GitHub免密码输入执行push/" class="archive-title">GitHub免密码输入执行push</a>
-        <p class="archive-date">06-20</p>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#GitHub" >
+    <span class="tag-code">GitHub</span>
+  </a>
+
       </div>
     
-      <div class="section-list-item">
-        <a href="/2018/06/20/Ubuntu安装Node-js环境/" class="archive-title">Ubuntu安装Node.js环境</a>
-        <p class="archive-date">06-20</p>
-      </div>
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-      <div class="section-list-item">
-        <a href="/2018/06/20/MySQL常用命令/" class="archive-title">MySQL常用命令</a>
-        <p class="archive-date">06-20</p>
-      </div>
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <div class="section-list-item">
-        <a href="/2018/06/20/Mac环境下-Chrome-浏览器-ERR-NETWORK-CHANGED-报错解决方法/" class="archive-title">Mac环境下 Chrome 浏览器 ERR_NETWORK_CHANGED 报错解决方法</a>
-        <p class="archive-date">06-20</p>
-      </div>
+      <a class="nav-left" href="/2018/06/20/Ubuntu安装Node-js环境/">
+        <span class="nav-arrow">← </span>
+        
+          Ubuntu安装Node.js环境
+        
+      </a>
+    
     
   </div>
-</section>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
+      </div>
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/tags/MySQL/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    var url = 'http://yoursite.com/2018/06/20/GitHub免密码输入执行push/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "jerrysir";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "GitHub免密码输入执行push",
+        owner: "jerrysir",
+        repo: "jerrysir.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
   })();
 </script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
