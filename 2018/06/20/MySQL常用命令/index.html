@@ -10,7 +10,7 @@
   
   <title>
     
-      Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法 | JerrySir&#39;s blog
+      MySQL常用命令 | JerrySir&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,7 +138,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法</h2>
+  <h2>MySQL常用命令</h2>
   <p class="post-date">2018-06-20</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -147,20 +147,19 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>一直以为是 SwitchyOmega 和 SpechtLite 的问题，原来是支付宝安全控件。</p>
-<p>由于支付宝现在已经不需要 Mac 安全控件机制，所以可以通过在 terminal 运行以下命令来移除:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo launchctl remove com.alipay.DispatcherService</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>快速连接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password</span><br></pre></td></tr></table></figure></p>
+<h3 id="库表"><a href="#库表" class="headerlink" title="库表"></a>库表</h3><p>显示所有库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure></p>
+<p>使用某个库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use tableName;</span><br></pre></td></tr></table></figure></p>
+<p>显示所有表<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure></p>
+<p>显示表结构<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show columns from tableName;</span><br></pre></td></tr></table></figure></p>
+<h3 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h3><p>设置使用连接数量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> global max_user_connections=150;</span><br></pre></td></tr></table></figure></p>
+<p>查看当前连接设置的值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like <span class="string">'%connect%'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>查看最大使用的连接数量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global status like <span class="string">'Max_used_connections'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>查看最大等待的连接数量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="string">'max_connections’;</span></span><br></pre></td></tr></table></figure></p>
+<p>查看当前连接状态<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show status like <span class="string">'%connect%'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>查看当前连接内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show processlist;</span><br></pre></td></tr></table></figure></p>
 </section>
     <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#Chrome" >
-    <span class="tag-code">Chrome</span>
-  </a>
-
-      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -168,13 +167,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-    
-      <a class="nav-right" href="/2018/06/20/MySQL常用命令/">
+      <a class="nav-left" href="/2018/06/20/Mac-下-Chrome-浏览器下-ERR-NETWORK-CHANGED-报错解决方法/">
+        <span class="nav-arrow">← </span>
         
-          MySQL常用命令
+          Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法
         
-        <span class="nav-arrow"> →</span>
       </a>
+    
     
   </div>
 
@@ -220,7 +219,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Start"><span class="toc-nav-text">Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#连接"><span class="toc-nav-text">连接</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#库表"><span class="toc-nav-text">库表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#状态"><span class="toc-nav-text">状态</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -230,7 +229,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2018/06/20/Mac-下-Chrome-浏览器下-ERR-NETWORK-CHANGED-报错解决方法/';
+    var url = 'http://yoursite.com/2018/06/20/MySQL常用命令/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -286,7 +285,7 @@
     var gitmentConfig = "jerrysir";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法",
+        id: "MySQL常用命令",
         owner: "jerrysir",
         repo: "jerrysir.github.io",
         oauth: {
