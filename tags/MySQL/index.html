@@ -65,7 +65,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link active">Home</a>
+            <a href="/" class="item-link">Home</a>
           
         </li>
       
@@ -104,7 +104,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link mobile-active">Home</a>
+              <a href="/" class="menu-link">Home</a>
             
           </li>
         
@@ -137,59 +137,43 @@
   </div>
 </header>
 
-    <main class="app-body">
+    <div id="article-banner">
+  <h2>Archives</h2>
+  <p class="post-date">文章归档</p>
+</div>
+<main class="app-body" id="archives">
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/06/20/MySQL常用命令/">MySQL常用命令</a>
-      </h2>
-      <p class="article-date">June 20, 2018</p>
-      
-        
-  <a href="/tags#MySQL" >
-    <span class="tag-code">MySQL</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Quick Start连接快速连接1mysql -u username -p password
-库表显示所有库1show databases;
-使用某个库1use tableName;
-显示所有表1show tables;
-显示表结构1show columns from tableName; ...
-        
+  
+  
+    <section class="time-section">
+  <h1 class="section-year">
+    2018
+  </h1>
+  <div class="section-list">
+    
+    
+      <div class="section-list-item">
+        <a href="/2018/06/20/MySQL常用命令/" class="archive-title">MySQL常用命令</a>
+        <p class="archive-date">06-20</p>
       </div>
-      <a class="more" href="/2018/06/20/MySQL常用命令/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/06/20/Mac-下-Chrome-浏览器下-ERR-NETWORK-CHANGED-报错解决方法/">Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法</a>
-      </h2>
-      <p class="article-date">June 20, 2018</p>
-      
-        
-  <a href="/tags#Chrome" >
-    <span class="tag-code">Chrome</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          一直以为是 SwitchyOmega 和 SpechtLite 的问题，原来是支付宝安全控件。
-由于支付宝现在已经不需要 Mac 安全控件机制，所以可以通过在 terminal 运行以下命令来移除:
-1$ sudo launchctl remove com.alipay.Dispatcher ...
-        
+    
+      <div class="section-list-item">
+        <a href="/2018/06/20/Mac-下-Chrome-浏览器下-ERR-NETWORK-CHANGED-报错解决方法/" class="archive-title">Mac 下 Chrome 浏览器下 ERR_NETWORK_CHANGED 报错解决方法</a>
+        <p class="archive-date">06-20</p>
       </div>
-      <a class="more" href="/2018/06/20/Mac-下-Chrome-浏览器下-ERR-NETWORK-CHANGED-报错解决方法/">Read more</a>
-    </article>
-  
-
+    
+  </div>
+</section>
   
 </main>
 
-
+<script>
+  (function () {
+    var url = 'http://yoursite.com/tags/MySQL/index.html';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+  })();
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
