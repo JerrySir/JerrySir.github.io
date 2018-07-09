@@ -10,7 +10,7 @@
   
   <title>
     
-      GitHub免密码输入执行push | JerrySir&#39;s blog
+      Ubuntu(Linux)部署Golang 1.9.2环境 | JerrySir&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>GitHub免密码输入执行push</h2>
-  <p class="post-date">2018-06-20</p>
+  <h2>Ubuntu(Linux)部署Golang 1.9.2环境</h2>
+  <p class="post-date">2018-07-09</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,27 +147,56 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>执行git clone 或 git init后，文件夹内产生.git隐藏文件夹，打开找到 config 文件编辑，找到url项：</p>
+    <section class="markdown-content"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Ubuntu系统环境"><a href="#Ubuntu系统环境" class="headerlink" title="Ubuntu系统环境"></a>Ubuntu系统环境</h3><p>只检查不更新已安装的软件包</p>
 <blockquote>
-<p>url = <a href="https://github.com/xxxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxxx/xxx.git</a></p>
+<p>$ apt update</p>
 </blockquote>
-<p>修改为:</p>
+<p>更新已安装的软件包</p>
 <blockquote>
-<p>url = https://[username]:[password]@github.com/xxxx/xxx.git</p>
+<p>$ apt upgrade</p>
 </blockquote>
-<p>例如:</p>
+<h3 id="Golang-apt-安装方式"><a href="#Golang-apt-安装方式" class="headerlink" title="Golang apt 安装方式"></a>Golang apt 安装方式</h3><blockquote>
+<p>$ apt install golang-go</p>
+</blockquote>
+<p>弊端：有些依赖需要高版本Go环境，但是apt安装环境为1.6(目前: 2018年07月09日)</p>
+<h3 id="Golang-源码-安装方式"><a href="#Golang-源码-安装方式" class="headerlink" title="Golang 源码 安装方式"></a>Golang 源码 安装方式</h3><p>删除旧版本Golang环境</p>
 <blockquote>
-<p>url = <a href="https://zhangsan:123456@github.com/xxxx/xxx.git" target="_blank" rel="noopener">https://zhangsan:123456@github.com/xxxx/xxx.git</a></p>
+<p>$ apt-get remove golang –purge</p>
 </blockquote>
-<p>保存后再执行push操作，将省去了输入密码的过程。</p>
+<blockquote>
+<p>$ wget <a href="https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz" target="_blank" rel="noopener">https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz</a></p>
+</blockquote>
+<blockquote>
+<p>$ sudo tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local</p>
+</blockquote>
+<h3 id="配置Golang环境变量"><a href="#配置Golang环境变量" class="headerlink" title="配置Golang环境变量"></a>配置Golang环境变量</h3><blockquote>
+<p>$ vim ~/.profile</p>
+</blockquote>
+<p>末尾添加</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT=/usr/local/go</span><br><span class="line">export GOPATH=$HOME/gocode</span><br><span class="line">export PATH=$PATH:$GOROOT/bin:$GOPATH/bin</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>立即生效,或者执行 “reboot”重启服务器</p>
+<blockquote>
+<p>$ source ~/.profile</p>
+</blockquote>
+<blockquote>
+<p>$ go version</p>
+</blockquote>
+<p>go version go1.9.2 linux/amd64</p>
+<blockquote>
+<p>$ go env</p>
+</blockquote>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#GitHub" >
-    <span class="tag-code">GitHub</span>
+  <a href="/tags#Ubuntu" >
+    <span class="tag-code">Ubuntu</span>
+  </a>
+
+  <a href="/tags#Golang" >
+    <span class="tag-code">Golang</span>
   </a>
 
       </div>
@@ -178,20 +207,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/06/20/Ubuntu安装Node-js环境/">
+      <a class="nav-left" href="/2018/06/20/GitHub免密码输入执行push/">
         <span class="nav-arrow">← </span>
         
-          Ubuntu安装Node.js环境
+          GitHub免密码输入执行push
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/07/09/Ubuntu-Linux-部署Golang-1-9-2环境/">
-        
-          Ubuntu(Linux)部署Golang 1.9.2环境
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -237,7 +259,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Start"><span class="toc-nav-text">Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Ubuntu系统环境"><span class="toc-nav-text">Ubuntu系统环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Golang-apt-安装方式"><span class="toc-nav-text">Golang apt 安装方式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Golang-源码-安装方式"><span class="toc-nav-text">Golang 源码 安装方式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#配置Golang环境变量"><span class="toc-nav-text">配置Golang环境变量</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -247,7 +269,7 @@
 
 <script>
   (function () {
-    var url = 'https://jerrysir.github.io/2018/06/20/GitHub免密码输入执行push/';
+    var url = 'https://jerrysir.github.io/2018/07/09/Ubuntu-Linux-部署Golang-1-9-2环境/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -303,7 +325,7 @@
     var gitmentConfig = "jerrysir";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "GitHub免密码输入执行push",
+        id: "Ubuntu(Linux)部署Golang 1.9.2环境",
         owner: "jerrysir",
         repo: "jerrysir.github.io",
         oauth: {
