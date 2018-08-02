@@ -10,7 +10,7 @@
   
   <title>
     
-      Linux后台执行命令: &amp;和nohup | JerrySir&#39;s blog
+      Taro(React Native)框架采坑笔记 | JerrySir&#39;s blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Linux后台执行命令: &和nohup</h2>
-  <p class="post-date">2018-07-10</p>
+  <h2>Taro(React Native)框架采坑笔记</h2>
+  <p class="post-date">2018-08-03</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,46 +147,28 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>Linux生产环境中,不可能长期让应用跑在前台,更多时间是项目应用在后台中运行,如果在终端中运行应用,在断开后程序将会终止运行,Linux中有两种方法让应用处于后台运行:</p>
-<h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><p>当在前台运行某个作业时，终端被该作业占据；可以在命令后面加上&amp; 实现后台运行。例如：go run main.go &amp;<br>后台运行作业时要当心：需要用户交互的命令不要放在后台执行，因为这样你的机器就会在那里傻等。不过，作业在后台运行一样会将结果输出到屏幕上，干扰你的工作。如果放在后台运行的作业会产生大量的输出，最好使用下面的方法把它的输出重定向到某个文件中：</p>
-<blockquote>
-<p>{command}  &gt;  out.file  2&gt;&amp;1  &amp; </p>
-</blockquote>
-<p>这样，所有的标准输出和错误输出都将被重定向到一个叫做out.file 的文件中.</p>
-<p>PS：当你成功地提交进程以后，就会显示出一个进程号，可以用它来监控该进程，或杀死它 (ps -ef | grep 进程号 或者 kill -9 进程号).</p>
-<h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p>使用&amp;命令后，作业被提交到后台运行，当前控制台没有被占用，但是一但把当前控制台关掉(退出帐户时)，作业就会停止运行。nohup命令可以在你退出帐户之后继续运行相应的进程.</p>
-<blockquote>
-<p>nohup {command} &amp;</p>
-</blockquote>
-<p>如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件：</p>
-<blockquote>
-<p>nohup {command} &gt; myout.file 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<p>使用了nohup之后，很多人就这样不管了，其实这样有可能在当前账户非正常退出或者结束的时候，命令还是自己结束了。所以在使用nohup命令后台运行命令之后，需要使用exit正常退出当前账户，这样才能保证命令一直在后台运行。</p>
-<p><code>Ctrl + z</code><br>可以将一个正在前台执行的命令放到后台，并且处于暂停状态。</p>
-<p><code>Ctrl + c</code><br>终止前台命令。</p>
-<blockquote>
-<p>$ jobs<br>查看当前有多少在后台运行的命令。<br>jobs -l选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。</p>
-</blockquote>
-<h3 id="2-gt-amp-1解析"><a href="#2-gt-amp-1解析" class="headerlink" title="2&gt;&amp;1解析"></a>2&gt;&amp;1解析</h3><blockquote>
-<p>$ {command} &gt;out.file 2&gt;&amp;1 &amp;</p>
-</blockquote>
-<ul>
-<li><p>command&gt;out.file是将command的输出重定向到out.file文件，即输出内容不打印到屏幕上，而是输出到out.file文件中。</p>
-</li>
-<li><p>2&gt;&amp;1 是将标准出错重定向到标准输出，这里的标准输出已经重定向到了out.file文件，即将标准出错也输出到out.file文件中。最后一个&amp;， 是让该命令在后台执行。</p>
-</li>
-<li><p>试想2&gt;1代表什么，2与&gt;结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；换成2&gt;&amp;1，&amp;与1结合就代表标准输出了，就变成错误重定向到标准输出.</p>
-</li>
-</ul>
+    <section class="markdown-content"><p>现在已经是凌晨1点，起因是下午使用了Taro一个组件，无法达到预定回调结果，刚刚解决，结果是因为马虎问题浪费了小半天的时间，特此写此篇文章，记录并收集使用Taro框架中遇到的问题，以及解决问题的思路。</p>
+<p>遇到问题时，解决问题的思路如下：</p>
+<ol>
+<li>大小写！大小写！大小写！ (重要的问题说三遍)</li>
+<li>检查所使用的组件为原生组件或是高级封装，如果为高级封装则检查文档中与原生组件的不同之处</li>
+<li>百度、Google所报的错误，提取简要关键信息，去除杂项(项目路径、个人姓名等)</li>
+<li>到项目GitHub中提交issues，注意简要说明问题，给出问题复现方法，以及问题代码，既然是想让作者帮你解决问题，一定要让作者明白你所阐述的问题所发生的原因</li>
+</ol>
+<p>遇到问题时随时补充</p>
+<p>2018年08月03日：<br><a href="https://github.com/NervJS/taro/issues/421" target="_blank" rel="noopener">https://github.com/NervJS/taro/issues/421</a><br>解决方法：<br>button改为Button<br>open-type改为openType</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Ubuntu" >
-    <span class="tag-code">Ubuntu</span>
+  <a href="/tags#Taro" >
+    <span class="tag-code">Taro</span>
+  </a>
+
+  <a href="/tags#React Native" >
+    <span class="tag-code">React Native</span>
   </a>
 
       </div>
@@ -197,20 +179,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/07/09/Ubuntu-Linux-部署Golang-1-9-2环境/">
+      <a class="nav-left" href="/2018/07/10/Linux后台执行命令-和nohup/">
         <span class="nav-arrow">← </span>
         
-          Ubuntu(Linux)部署Golang 1.9.2环境
+          Linux后台执行命令: &amp;和nohup
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/08/03/Taro-React-Native-框架采坑笔记/">
-        
-          Taro(React Native)框架采坑笔记
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -256,7 +231,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Start"><span class="toc-nav-text">Quick Start</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#amp"><span class="toc-nav-text">&amp;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nohup"><span class="toc-nav-text">nohup</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-gt-amp-1解析"><span class="toc-nav-text">2&gt;&amp;1解析</span></a></li></ol></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -266,7 +241,7 @@
 
 <script>
   (function () {
-    var url = 'https://jerrysir.github.io/2018/07/10/Linux后台执行命令-和nohup/';
+    var url = 'https://jerrysir.github.io/2018/08/03/Taro-React-Native-框架采坑笔记/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -322,7 +297,7 @@
     var gitmentConfig = "jerrysir";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Linux后台执行命令: &和nohup",
+        id: "Taro(React Native)框架采坑笔记",
         owner: "jerrysir",
         repo: "jerrysir.github.io",
         oauth: {
